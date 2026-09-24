@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f8fb">
+  <meta name="description" content="Мобильная программа фестиваля ранней помощи в Кирове, 28–29 сентября 2026 года.">
+  <title>Фестиваль ранней помощи — Киров, 28–29 сентября 2026</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">К программе</a>
+
+  <header class="hero">
+    <div class="hero__glow hero__glow--one" aria-hidden="true"></div>
+    <div class="hero__glow hero__glow--two" aria-hidden="true"></div>
+    <div class="container hero__content">
+      <div class="eyebrow">Киров · 28–29 сентября 2026</div>
+      <h1>Фестиваль<br><span>ранней помощи</span></h1>
+      <p class="hero__lead">Расписание, мастер-классы, спикеры и темы — в одном удобном мобильном формате.</p>
+      <div class="hero__actions">
+        <button class="primary-button" type="button" data-jump-day="2026-09-28">28 сентября</button>
+        <button class="secondary-button" type="button" data-jump-day="2026-09-29">29 сентября</button>
+      </div>
+      <div class="venue-strip" aria-label="Места проведения">
+        <div>
+          <span>28 сентября</span>
+          <strong>ул. Романа Ердякова, 23/2</strong>
+          <small>Институт развития образования Кировской области</small>
+        </div>
+        <div>
+          <span>29 сентября</span>
+          <strong>ул. Морозовская, 68а</strong>
+          <small>Центр «Дорогою добра»</small>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="quick-section" aria-labelledby="quick-title">
+      <div class="container">
+        <div class="section-heading section-heading--tight">
+          <div>
+            <span class="section-kicker">Быстрый доступ</span>
+            <h2 id="quick-title">Что хотите посмотреть?</h2>
+          </div>
+        </div>
+        <div class="quick-grid">
+          <button class="quick-card" type="button" data-view-target="schedule">
+            <span class="quick-card__icon" aria-hidden="true">▦</span>
+            <strong>Расписание</strong>
+            <small>По времени и дням</small>
+          </button>
+          <button class="quick-card" type="button" data-view-target="speakers">
+            <span class="quick-card__icon" aria-hidden="true">◎</span>
+            <strong>Спикеры</strong>
+            <small>Все участники</small>
+          </button>
+          <button class="quick-card" type="button" data-view-target="topics">
+            <span class="quick-card__icon" aria-hidden="true">#</span>
+            <strong>Темы</strong>
+            <small>По направлениям</small>
+          </button>
+          <button class="quick-card" type="button" data-view-target="favorites">
+            <span class="quick-card__icon" aria-hidden="true">☆</span>
+            <strong>Моя программа</strong>
+            <small>Сохранённые события</small>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="app-section" aria-label="Программа фестиваля">
+      <div class="container app-shell">
+        <div class="app-toolbar">
+          <div class="segmented" role="tablist" aria-label="День программы">
+            <button class="segmented__button is-active" role="tab" aria-selected="true" data-day="2026-09-28" type="button">
+              <span>28 сен</span><small>понедельник</small>
+            </button>
+            <button class="segmented__button" role="tab" aria-selected="false" data-day="2026-09-29" type="button">
+              <span>29 сен</span><small>вторник</small>
+            </button>
+          </div>
+          <label class="search-box" for="search-input">
+            <span aria-hidden="true">⌕</span>
+            <input id="search-input" type="search" placeholder="Поиск по теме или спикеру" autocomplete="off">
+          </label>
+        </div>
+
+        <div class="view" id="schedule-view" data-view="schedule">
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker" id="schedule-kicker">Понедельник · 28 сентября</span>
+              <h2>Расписание дня</h2>
+            </div>
+            <button class="text-button" type="button" id="now-button">Что идёт сейчас?</button>
+          </div>
+          <div id="schedule-list" class="schedule-list" aria-live="polite"></div>
+        </div>
+
+        <div class="view" id="speakers-view" data-view="speakers" hidden>
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker">Участники фестиваля</span>
+              <h2>Спикеры</h2>
+            </div>
+          </div>
+          <div id="speakers-list" class="speaker-grid"></div>
+        </div>
+
+        <div class="view" id="topics-view" data-view="topics" hidden>
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker">Навигация по содержанию</span>
+              <h2>Темы выступлений</h2>
+            </div>
+          </div>
+          <div id="topics-list" class="topic-cloud"></div>
+          <div id="topic-results" class="schedule-list schedule-list--compact"></div>
+        </div>
+
+        <div class="view" id="favorites-view" data-view="favorites" hidden>
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker">Личный список</span>
+              <h2>Моя программа</h2>
+            </div>
+          </div>
+          <p class="muted" id="favorites-hint">Нажмите ☆ у события — оно появится здесь. Выбор сохранится на этом телефоне.</p>
+          <div id="favorites-list" class="schedule-list schedule-list--compact"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="places-section" aria-labelledby="places-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">Адреса</span>
+            <h2 id="places-title">Где проходит фестиваль</h2>
+          </div>
+        </div>
+        <div class="places-grid">
+          <article class="place-card">
+            <span class="place-card__date">28 сентября</span>
+            <h3>Институт развития образования Кировской области</h3>
+            <p>г. Киров, ул. Романа Ердякова, 23/2</p>
+          </article>
+          <article class="place-card">
+            <span class="place-card__date">29 сентября · мастер-классы</span>
+            <h3>Центр «Дорогою добра»</h3>
+            <p>г. Киров, ул. Морозовская, 68а</p>
+          </article>
+          <article class="place-card">
+            <span class="place-card__date">29 сентября · 14:00–16:00</span>
+            <h3>Кировский центр социальной помощи семье и детям «Окрыляем»</h3>
+            <p>г. Киров, ул. Плехова, 3</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Навигация по программе">
+    <button class="bottom-nav__item is-active" type="button" data-view-target="schedule"><span aria-hidden="true">▦</span><small>Расписание</small></button>
+    <button class="bottom-nav__item" type="button" data-view-target="speakers"><span aria-hidden="true">◎</span><small>Спикеры</small></button>
+    <button class="bottom-nav__item" type="button" data-view-target="topics"><span aria-hidden="true">#</span><small>Темы</small></button>
+    <button class="bottom-nav__item" type="button" data-view-target="favorites"><span aria-hidden="true">☆</span><small>Моё</small></button>
+  </nav>
+
+  <dialog class="speaker-dialog" id="speaker-dialog">
+    <button class="dialog-close" type="button" aria-label="Закрыть">×</button>
+    <div id="speaker-dialog-content"></div>
+  </dialog>
+
+  <footer>
+    <div class="container footer__inner">
+      <strong>Фестиваль ранней помощи · Киров</strong>
+      <span>28–29 сентября 2026</span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
